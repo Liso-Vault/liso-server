@@ -15,6 +15,19 @@ serve(async (req) => {
     ]);
   }
 
+  if (method == "GET") {
+    try {
+      await s3.statObject(`${address}/${object}`);
+    } catch (_) {
+      return respond(400, {}, [
+        {
+          code: 1,
+          message: `Object not found`,
+        },
+      ]);
+    }
+  }
+
   const url = await s3.getPresignedUrl(method, `${address}/${object}`, {
     expirySeconds: expirySeconds,
   });
