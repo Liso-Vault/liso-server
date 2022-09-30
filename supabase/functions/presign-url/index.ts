@@ -23,10 +23,8 @@ serve(async (req) => {
   const expirationDate = new Date(expirationTimestamp).toISOString();
 
   return respond(200, {
-    objects: {
-      url: url,
-      method: method,
-      expirationDate: expirationDate,
-    },
+    url: url,
+    method: method,
+    expirationDate: expirationDate,
   });
 });
