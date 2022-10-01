@@ -17,7 +17,7 @@ serve(async (req) => {
   }
 
   const listObjects = s3.listObjects({
-    prefix: `${address}/${path}`,
+    prefix: `${address}/${encodeURI(path)}`,
   });
 
   const objects: Array<S3Object> = [];

@@ -16,7 +16,7 @@ serve(async (req) => {
   }
 
   for (const e of objects) {
-    await s3.deleteObject(`${address}/${e}`);
+    await s3.deleteObject(`${address}/${encodeURI(e)}`);
   }
 
   return respond();

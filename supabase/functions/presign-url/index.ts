@@ -15,9 +15,11 @@ serve(async (req) => {
     ]);
   }
 
+  const encodedObject = encodeURI(`${address}/${object}`);
+
   if (method == "GET") {
     try {
-      await s3.statObject(`${address}/${object}`);
+      await s3.statObject(encodedObject);
     } catch (_) {
       return respond(400, {}, [
         {
@@ -28,7 +30,7 @@ serve(async (req) => {
     }
   }
 
-  const url = await s3.getPresignedUrl(method, `${address}/${object}`, {
+  const url = await s3.getPresignedUrl(method, encodedObject, {
     expirySeconds: expirySeconds,
   });
 

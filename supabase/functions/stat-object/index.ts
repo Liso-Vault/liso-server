@@ -16,7 +16,7 @@ serve(async (req) => {
   }
 
   try {
-    const status = await s3.statObject(`${address}/${object}`);
+    const status = await s3.statObject(`${address}/${encodeURI(object)}`);
     return respond(200, status);
   } catch (_) {
     return respond(400, {}, [
