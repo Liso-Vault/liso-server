@@ -1,3 +1,5 @@
+import { corsHeaders } from "../_shared/cors.ts";
+
 function respond(status = 200, data = {}, errors: Array<Error> = []) {
   const response = {
     status: status,
@@ -6,7 +8,7 @@ function respond(status = 200, data = {}, errors: Array<Error> = []) {
   };
 
   return new Response(JSON.stringify(response), {
-    headers: { "Content-Type": "application/json" },
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 }
 
