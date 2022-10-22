@@ -8,7 +8,7 @@ serve(async (req) => {
     return new Response("ok", { headers: corsHeaders });
   }
 
-  const productId = "liso-pro";
+  const productId = "oc-aDYz8KrxHjfMqBxNDVQ==";
   const url = `https://api.gumroad.com/v2/products/${productId}?&access_token=${Deno.env.get(
     "GUMROAD_ACCESS_TOKEN"
   )!}`;
