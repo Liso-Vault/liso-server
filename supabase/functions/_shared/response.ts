@@ -8,7 +8,7 @@ function respond(status = 200, data = {}, errors: Array<Error> = []) {
   };
 
   return new Response(JSON.stringify(response), {
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    headers: { ...corsHeaders, "Content-Type": "application/json; charset=UTF-8" },
   });
 }
 

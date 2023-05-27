@@ -1,0 +1,25 @@
+Project ID: zlymralqctgzydksekht
+
+Make sure Docker is running
+
+# start container
+supabase start
+
+# stop container + backup
+supabase stop --backup
+
+# serve a function
+supabase functions serve status --env-file ./supabase/.env.local
+
+# deploy a function
+supabase functions deploy status
+
+# dump
+supabase db dump --db-url "$OLD_DB_URL" -f schema.sql
+
+# restore
+psql --single-transaction --variable ON_ERROR_STOP=1 --file schema.sql --dbname postgresql://postgres:postgres@localhost:54322/postgres
+
+
+# deploy all functions
+supabase functions deploy status; 
